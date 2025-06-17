@@ -1,0 +1,23 @@
+''' Problem 3 Identify the outliers using Z score :-
+ Use Z- score to find outliers (Z>2)or (Z<-2)
+ Z - score formula z=x-mean/std'''
+
+# Import Libraries:-
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+# Create an empty list:-
+new_salaries=[]
+salaries=np.array([30000,32000,29000,31000,35000,100000]) # data
+for i in salaries:
+    z=(i-np.mean(salaries))/np.std(salaries) # Z score formula
+    print("Z-score of",i,"is",z)
+    if z<2 and z>-2: # Outlier_threshold
+        new_salaries.append(i)
+print("")        
+print("After_removing_outliers",new_salaries)
+print("")
+# Plot the graph which helps to find the outlier easily:
+x=sns.boxplot(salaries)
+plt.title("Finding outliers using Box plot")
+plt.ylabel("salaries")
